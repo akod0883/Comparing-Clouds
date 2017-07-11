@@ -21,7 +21,7 @@ AWS_ACCESS_KEY_SECRET = 'your secret acccess key'
 # destination bucket name
 bucket_name = 'desired bucket name'
 # source directory
-sourceDir = '/Users/AkhilKodumuri/Desktop/10GBFolder'
+sourceDir = 'path to your directory'
 # destination directory name (on s3)
 destDir = ''
 
