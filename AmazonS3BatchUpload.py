@@ -15,11 +15,11 @@ def _new_match_hostname(cert, hostname):
 ssl.match_hostname = _new_match_hostname
 
 # Fill these in - you get them when you sign up for S3
-AWS_ACCESS_KEY_ID = 'AKIAI6PMWK3Y4GS5EGFQ'
-AWS_ACCESS_KEY_SECRET = 'lDJ7enKWhV94NS7whpvCrXN5RcXmHdjhM+9UZkkC'
+AWS_ACCESS_KEY_ID = 'your access key'
+AWS_ACCESS_KEY_SECRET = 'your secret acccess key'
 # Fill in info on data to upload
 # destination bucket name
-bucket_name = 'wasabi.vs.amazons3'
+bucket_name = 'desired bucket name'
 # source directory
 sourceDir = '/Users/AkhilKodumuri/Desktop/10GBFolder'
 # destination directory name (on s3)
