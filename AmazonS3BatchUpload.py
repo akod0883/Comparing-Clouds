@@ -71,7 +71,9 @@ for filename in uploadFileNames:
         k.key = destpath
         k.set_contents_from_filename(sourcepath,
                 cb=percent_cb, num_cb=10)
+        mp.complete_upload()
 
 
 time_taken = time.time() - start 
+
 print("It took " + str(time_taken) + " seconds to download your files")
