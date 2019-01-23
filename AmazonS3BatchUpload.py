@@ -14,7 +14,7 @@ _old_match_hostname = ssl.match_hostname
 
 ssl.match_hostname = _new_match_hostname
 
-# Fill these in - you get them when you sign up for S3
+# to link your aucount
 AWS_ACCESS_KEY_ID = 'your access key'
 AWS_ACCESS_KEY_SECRET = 'your secret acccess key'
 # Fill in info on data to upload
@@ -25,32 +25,34 @@ sourceDir = 'path to your directory'
 # destination directory name (on s3)
 destDir = ''
 
-#max size in bytes before uploading in parts. between 1 and 5 GB recommended
+#max size in bytes before uploading in parts. between 1 and 5 GB recommended recommended but Wasabi cannot upload a file greater than 5 GB without creating partitions
 MAX_SIZE = 20 * 1000 * 1000
 #size of parts when uploading in parts
 PART_SIZE = 6 * 1000 * 1000
+#starts the timer so time taken to upload entire batch is recorded
 start = time.time()
-
+#connecting to to Amazon S3 API using Boto
 conn = boto.connect_s3(AWS_ACCESS_KEY_ID, AWS_ACCESS_KEY_SECRET)
-
+#Targeting specific bucket in Amazon S3 Account
 bucket = conn.get_bucket(bucket_name)
 
-
+#Assists in targeting desired files to be uploaded
 uploadFileNames = []
 for (sourceDir, dirname, filename) in os.walk(sourceDir):
     uploadFileNames.extend(filename)
     break
-
+#informs user percentage of downloaded files
 def percent_cb(complete, total):
     sys.stdout.write('.')
     sys.stdout.flush()
-
+#Starts the batch file upload
 for filename in uploadFileNames:
     sourcepath = os.path.join(sourceDir + '/' +filename)
     destpath = os.path.join(destDir, filename)
     print(('Uploading ') + str(sourcepath) + (' to Amazon S3 bucket ') + str(bucket_name)) 
 
     filesize = os.path.getsize(sourcepath)
+    #decides whether or not the specific file currently being uploaded should be uploaded in parts or as a whole 
     if filesize > MAX_SIZE:
         print("multipart upload")
         print(str(filesize / 6000000) + (" part upload"))
