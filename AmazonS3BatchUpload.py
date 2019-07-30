@@ -6,7 +6,7 @@ import sys, ssl, time, math
 
 _old_match_hostname = ssl.match_hostname
 
-##def _new_match_hostname(cert, hostname):
+## def _new_match_hostname(cert, hostname):
 ##    if hostname.endswith('.s3.amazonaws.com'):
 ##      pos = hostname.find('.s3.amazonaws.com')                            ##uncomment this part if your bucket name contains . (ex. bucket.name)
 ##      hostname = hostname[:pos].replace('.', '') + hostname[pos:]
@@ -49,10 +49,10 @@ def percent_cb(complete, total):
 for filename in uploadFileNames:
     sourcepath = os.path.join(sourceDir + '/' +filename)
     destpath = os.path.join(destDir, filename)
-    print(('Uploading ') + str(sourcepath) + (' to Amazon S3 bucket ') + str(bucket_name)) 
+    print(('Uploading ') + str(sourcepath) + (' to Amazon S3 bucket ') + str(bucket_name))
 
     filesize = os.path.getsize(sourcepath)
-    #decides whether or not the specific file currently being uploaded should be uploaded in parts or as a whole 
+    #decides whether or not the specific file currently being uploaded should be uploaded in parts or as a whole
     if filesize > MAX_SIZE:
         print("multipart upload")
         print(str(filesize / 6000000) + (" part upload"))
@@ -76,6 +76,6 @@ for filename in uploadFileNames:
         mp.complete_upload()
 
 
-time_taken = time.time() - start 
+time_taken = time.time() - start
 
 print("It took " + str(time_taken) + " seconds to download your files")
