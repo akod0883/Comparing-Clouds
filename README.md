@@ -11,7 +11,7 @@ This repo contains files to help transfer files to either the Wasabi Cloud or Am
 ## Setup, Install, Run
 
 #### Setup
-All files can be ran individually
+All files can be ran individually. For You will also need to make a Amazon S3 account and know your buckets for your secret access key and secret acess key. For any file using Wasabi, you would need to know your access key and secret access key. 
 
 #### Install
 Within the `./amazon-vs-wasabi` directory you will find the file `requirements.txt`. Run this file to install all the necessary packages to run these files.
