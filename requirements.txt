@@ -1,0 +1,7 @@
+boto
+boto3
+filechunkio
+times
+os-sys
+ssl
+mathematics
